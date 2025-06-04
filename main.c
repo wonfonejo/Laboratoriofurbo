@@ -1,14 +1,50 @@
-typedef struct {
-    char name[25];
-    char surname[25];
-    int number;
-} PLAYER;
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "estructuras.h"
+#include "mostrar_cancha.c"
+#include "funciones_equipo.c"
+#include "funciones_cancha.c"
 
-typedef struct {
-    char nameofteam[25];
-    int numberofplayers;
-    PLAYER *players;
-} TEAM;
+void inicializar_cancha(Cancha *cancha);
+void asignar_equipo(TEAM *equipo, const char *nombre, PLAYER plantilla[], int cantidad);
+void posicionar_equipo(Cancha *cancha, int equipoIndex, int invertido);
+void mostrar_cancha(const Cancha *cancha);
+
+int main() {
+    Cancha cancha;
+
+    
+    PLAYER plantilla1[11] = {
+        {"Portero1", "", 1}, {"Defensa1", "", 2}, {"Defensa2", "", 3}, {"Defensa3", "", 4}, {"Defensa4", "", 5},
+        {"Medio1", "", 6}, {"Medio2", "", 7}, {"Medio3", "", 8},
+        {"Delantero1", "", 9}, {"Delantero2", "", 10}, {"Delantero3", "", 11}
+    };
+
+    PLAYER plantilla2[11] = {
+        {"Portero2", "", 1}, {"Defensa1", "", 2}, {"Defensa2", "", 3}, {"Defensa3", "", 4}, {"Defensa4", "", 5},
+        {"Medio1", "", 6}, {"Medio2", "", 7}, {"Medio3", "", 8},
+        {"Delantero1", "", 9}, {"Delantero2", "", 10}, {"Delantero3", "", 11}
+    };
+
+    
+    inicializar_cancha(&cancha);
+
+    
+    asignar_equipo(&cancha.equipos[0], "Local FC", plantilla1, 11);
+    asignar_equipo(&cancha.equipos[1], "Visitante FC", plantilla2, 11);
+    posicionar_equipo(&cancha, 0, 0);  
+    posicionar_equipo(&cancha, 1, 1);
+
+    
+    mostrar_cancha(&cancha);
+
+    
+    free(cancha.equipos[0].players);
+    free(cancha.equipos[1].players);
+
+    return 0;
+}
 
 // La parte de la cancha se hara en base a el codigo de los laboratorios de ajedrez (coordenas).
 
