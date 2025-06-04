@@ -16,7 +16,7 @@ typedef struct {
 typedef struct {
     TEAM equipos[2];
     char Balon;
-    char Espacio[38][42];
+    char Espacio[38][42][2];
 } Cancha;
 
 #endif
