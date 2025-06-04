@@ -37,6 +37,11 @@ void Inicializar_cancha(Cancha *cancha)
     
 }
 
+void Inicialzando_jugadores()
+{
+    
+}
+
 int main() {
     Cancha cancha;
 
