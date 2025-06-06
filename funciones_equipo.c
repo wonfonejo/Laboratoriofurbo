@@ -52,6 +52,32 @@ void posicionar_equipo(Cancha *cancha, int equipoIndex) {
 
     }
 
+}
 
+void Mover_Jugadores(Cancha *cancha, int equipoIndex, int jugadorIndex, int nuevaX, int nuevaY) 
+{
+    
+    if (nuevaX < 0 || nuevaX >= FILAS || nuevaY < 0 || nuevaY >= COLUMNAS) {
+        printf("Valor incorrecto porfavor elija otra posicion\n");
+        return;
+    }
+
+    if (strcmp(cancha->Espacio[nuevaX][nuevaY], "") != 0) {
+        printf("Movimiento incorrecto en la posicion (%d, %d).\n", nuevaX, nuevaY);
+        return;
+    }
+
+    int encontrado = 0;
+    for (int i = 0; i < FILAS && !encontrado; i++) {
+        for (int j = 0; j < COLUMNAS && !encontrado; j++) {
+            if (strcmp(cancha->Espacio[i][j], cancha->equipos[equipoIndex].players[jugadorIndex].number) == 0) {
+                strcpy(cancha->Espacio[i][j], ""); 
+                encontrado = 1;
+            }
+        }
+    }
+    strcpy(cancha->Espacio[nuevaX][nuevaY], cancha->equipos[equipoIndex].players[jugadorIndex].number);
+    
 
 }
+

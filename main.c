@@ -5,11 +5,15 @@
 #include "mostrar_cancha.c"
 #include "funciones_equipo.c"
 #include "funciones_cancha.c"
+#include "funcion_Balon.c"
 
 void inicializar_cancha(Cancha *cancha);
 void asignar_equipo(TEAM *equipo, const char *nombre, PLAYER Equipo[], int cantidad);
 void posicionar_equipo(Cancha *cancha, int equipoIndex);
 void mostrar_cancha(const Cancha *cancha);
+void InicializarBalon(Cancha *cancha);
+void MoverBalon(Cancha *cancha, int nuevaX, int nuevaY);
+void Mover_Jugadores(Cancha *cancha, int equipoIndex, int jugadorIndex, int nuevaX, int nuevaY);
 
 int main() {
     Cancha cancha;
@@ -27,19 +31,26 @@ int main() {
     };
 
     inicializar_cancha(&cancha);
-
+    InicializarBalon(&cancha);
     
     asignar_equipo(&cancha.equipos[0], "America", Equipo1, 11);
     asignar_equipo(&cancha.equipos[1], "Madrid", Equipo2, 11);
     posicionar_equipo(&cancha, 0);  
     posicionar_equipo(&cancha, 1);
-
-    mostrar_cancha(&cancha);
     //printf("El 10 del America es  %s\n", cancha.equipos[0].players[9].name);
     //printf("El 10 del Madrid es %s\n", cancha.equipos[1].players[9].name);
 
-
     
+    
+
+    //mostrar_cancha(&cancha); 
+    printf("\n");
+
+    //Mover_Jugadores(&cancha, 0, 9, 5, 5);
+    Mover_Jugadores(&cancha, 1, 9, 18, 20);
+    MoverBalon(&cancha, 5, 5);
+    mostrar_cancha(&cancha);
+
     free(cancha.equipos[0].players);
     free(cancha.equipos[1].players);
 
