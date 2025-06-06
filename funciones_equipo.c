@@ -14,42 +14,46 @@ void asignar_equipo(TEAM *equipo, const char *nombre, PLAYER plantilla[], int ca
     memcpy(equipo->players, plantilla, cantidad * sizeof(PLAYER));
 }
 
-void posicionar_equipo(Cancha *cancha, int equipoIndex, int invertido) {
-    TEAM *equipo = &cancha->equipos[equipoIndex];
-    PLAYER *jugadores = equipo->players;
+void posicionar_equipo(Cancha *cancha, int equipoIndex) {
+    
+    if (equipoIndex)
+    {
+        strcpy(cancha->Espacio[37][21], cancha->equipos[1].players->number[0]);
 
-    // Columnas donde se posicionan los jugadores
-    int columnas[] = {5, 12, 21, 30};  // portero, defensas, medios, delanteros
+        strcpy(cancha->Espacio[33][10], cancha->equipos[1].players->number[1]);
+        strcpy(cancha->Espacio[33][17], cancha->equipos[1].players->number[2]);
+        strcpy(cancha->Espacio[33][25], cancha->equipos[1].players->number[3]);
+        strcpy(cancha->Espacio[33][32], cancha->equipos[1].players->number[4]);
 
-    if (invertido) {
-        columnas[0] = 36;
-        columnas[1] = 29;
-        columnas[2] = 20;
-        columnas[3] = 11;
+        strcpy(cancha->Espacio[28][15], cancha->equipos[1].players->number[5]);
+        strcpy(cancha->Espacio[28][21], cancha->equipos[1].players->number[6]);
+        strcpy(cancha->Espacio[28][27], cancha->equipos[1].players->number[7]);
+
+        strcpy(cancha->Espacio[23][12], cancha->equipos[1].players->number[8]);
+        strcpy(cancha->Espacio[23][21], cancha->equipos[1].players->number[9]);
+        strcpy(cancha->Espacio[23][30], cancha->equipos[1].players->number[10]);
+    
+    }else
+    {
+        strcpy(cancha->Espacio[0][21], cancha->equipos[0].players->number[0]);
+
+        strcpy(cancha->Espacio[4][10], cancha->equipos[0].players->number[1]);
+        strcpy(cancha->Espacio[4][17], cancha->equipos[0].players->number[2]);
+        strcpy(cancha->Espacio[4][25], cancha->equipos[0].players->number[3]);
+        strcpy(cancha->Espacio[4][32], cancha->equipos[0].players->number[4]);
+
+        strcpy(cancha->Espacio[9][15], cancha->equipos[0].players->number[5]);
+        strcpy(cancha->Espacio[9][21], cancha->equipos[0].players->number[6]);
+        strcpy(cancha->Espacio[9][27], cancha->equipos[0].players->number[7]);
+
+        strcpy(cancha->Espacio[14][12], cancha->equipos[0].players->number[8]);
+        strcpy(cancha->Espacio[14][21], cancha->equipos[0].players->number[9]);
+        strcpy(cancha->Espacio[14][30], cancha->equipos[0].players->number[10]);
+       
     }
-
-    int fila_portero = 19;
-    int filas_def[4] = {13, 16, 22, 25};
-    int filas_med[3] = {14, 19, 24};
-    int filas_del[3] = {16, 19, 22};
-
-    int idx = 0;
-
-    // Portero
-    cancha->Espacio[fila_portero][columnas[0]] = jugadores[idx++].number + '0';
     
-
-    // Defensas
-    for (int i = 0; i < 4; i++)
-        cancha->Espacio[filas_def[i]][columnas[1]] = jugadores[idx++].number + '0';
-
+    
+   
 
     
-    // Mediocampistas
-    for (int i = 0; i < 3; i++)
-        cancha->Espacio[filas_med[i]][columnas[2]] = jugadores[idx++].number + '0';
-    
-    // Delanteros
-    for (int i = 0; i < 3; i++)
-        cancha->Espacio[filas_del[i]][columnas[3]] = jugadores[idx++].number + '0';
 }

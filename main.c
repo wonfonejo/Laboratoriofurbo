@@ -8,7 +8,7 @@
 
 void inicializar_cancha(Cancha *cancha);
 void asignar_equipo(TEAM *equipo, const char *nombre, PLAYER plantilla[], int cantidad);
-void posicionar_equipo(Cancha *cancha, int equipoIndex, int invertido);
+void posicionar_equipo(Cancha *cancha, int equipoIndex);
 void mostrar_cancha(const Cancha *cancha);
 
 int main() {
@@ -16,15 +16,15 @@ int main() {
 
     
     PLAYER plantilla1[11] = {
-        {"Portero1", "", 1}, {"Defensa1", "", 2}, {"Defensa2", "", 3}, {"Defensa3", "", 4}, {"Defensa4", "", 5},
-        {"Medio1", "", 6}, {"Medio2", "", 7}, {"Medio3", "", 8},
-        {"Delantero1", "", 9}, {"Delantero2", "", 10}, {"Delantero3", "", 11}
+        {"Portero1", "", {"1"}}, {"Defensa1", "", {"2"}}, {"Defensa2", "", {"3"}}, {"Defensa3", "", {"4"}}, {"Defensa4", "", {"5"}},
+        {"Medio1", "", {"6"}}, {"Medio2", "", {"7"}}, {"Medio3", "", {"8"}},
+        {"Delantero1", "", {"9"}}, {"Delantero2", "", {"10"}}, {"Delantero3", "", {"11"}}
     };
 
     PLAYER plantilla2[11] = {
-        {"Portero2", "", 1}, {"Defensa1", "", 2}, {"Defensa2", "", 3}, {"Defensa3", "", 4}, {"Defensa4", "", 5},
-        {"Medio1", "", 6}, {"Medio2", "", 7}, {"Medio3", "", 8},
-        {"Delantero1", "", 9}, {"Delantero2", "", 10}, {"Delantero3", "", 11}
+        {"Portero1", "", {"1"}}, {"Defensa1", "", {"2"}}, {"Defensa2", "", {"3"}}, {"Defensa3", "", {"4"}}, {"Defensa4", "", {"5"}},
+        {"Medio1", "", {"6"}}, {"Medio2", "", {"7"}}, {"Medio3", "", {"8"}},
+        {"Delantero1", "", {"9"}}, {"Delantero2", "", {"10"}}, {"Delantero3", "", {"11"}}
     };
 
     
@@ -33,8 +33,8 @@ int main() {
     
     asignar_equipo(&cancha.equipos[0], "Local FC", plantilla1, 11);
     asignar_equipo(&cancha.equipos[1], "Visitante FC", plantilla2, 11);
-    posicionar_equipo(&cancha, 0, 0);  
-    posicionar_equipo(&cancha, 1, 1);
+    posicionar_equipo(&cancha, 0);  
+    posicionar_equipo(&cancha, 1);
 
     
     mostrar_cancha(&cancha);

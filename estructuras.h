@@ -4,7 +4,7 @@
 typedef struct {
     char name[25];
     char surname[25];
-    int number;
+    char *number[10];
 } PLAYER;
 
 typedef struct {
