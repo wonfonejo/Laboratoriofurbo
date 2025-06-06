@@ -1,10 +1,13 @@
 #ifndef ESTRUCTURAS_H
 #define ESTRUCTURAS_H
 
+#define FILAS 38
+#define COLUMNAS 42
+
 typedef struct {
     char name[25];
     char surname[25];
-    char *number[10];
+    char number[3];
 } PLAYER;
 
 typedef struct {
@@ -16,7 +19,7 @@ typedef struct {
 typedef struct {
     TEAM equipos[2];
     char Balon;
-    char Espacio[38][42][2];
+    char Espacio[38][42][3];
 } Cancha;
 
 #endif

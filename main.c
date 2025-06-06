@@ -7,37 +7,37 @@
 #include "funciones_cancha.c"
 
 void inicializar_cancha(Cancha *cancha);
-void asignar_equipo(TEAM *equipo, const char *nombre, PLAYER plantilla[], int cantidad);
+void asignar_equipo(TEAM *equipo, const char *nombre, PLAYER Equipo[], int cantidad);
 void posicionar_equipo(Cancha *cancha, int equipoIndex);
 void mostrar_cancha(const Cancha *cancha);
 
 int main() {
     Cancha cancha;
 
-    
-    PLAYER plantilla1[11] = {
-        {"Portero1", "", {"1"}}, {"Defensa1", "", {"2"}}, {"Defensa2", "", {"3"}}, {"Defensa3", "", {"4"}}, {"Defensa4", "", {"5"}},
-        {"Medio1", "", {"6"}}, {"Medio2", "", {"7"}}, {"Medio3", "", {"8"}},
-        {"Delantero1", "", {"9"}}, {"Delantero2", "", {"10"}}, {"Delantero3", "", {"11"}}
+    PLAYER Equipo1[11] = {
+        {"Memo", "Ochoa", "1"}, {"Lucas", "Hernandez", "2"}, {"Dani", "Alves", "3"}, {"Sergio", "Ramos", "4"}, {"Ronald", "Matarrita", "5"},
+        {"Xavi", "Hernandez", "6"}, {"Andres", "Iniesta", "7"}, {"Cesc", "Fabregas", "8"},
+        {"David", "Villa", "9"}, {"Samuel", "Etoo", "10"}, {"Thierry", "Henry", "11"}
     };
 
-    PLAYER plantilla2[11] = {
-        {"Portero1", "", {"1"}}, {"Defensa1", "", {"2"}}, {"Defensa2", "", {"3"}}, {"Defensa3", "", {"4"}}, {"Defensa4", "", {"5"}},
-        {"Medio1", "", {"6"}}, {"Medio2", "", {"7"}}, {"Medio3", "", {"8"}},
-        {"Delantero1", "", {"9"}}, {"Delantero2", "", {"10"}}, {"Delantero3", "", {"11"}}
+    PLAYER Equipo2[11] = {
+        {"Keylor", "Navas", "1"}, {"Kendall", "Waston", "2"}, {"Ronald", "Araujo", "3"}, {"Dani", "Carvajal", "4"}, {"Arda", "Guler", "5"},
+        {"Toni", "Kroos", "6"}, {"Luka", "Modric", "7"}, {"Isco", "Alarcon", "8"},
+        {"Karim", "Benzema", "9"}, {"Eden", "Hazard", "10"}, {"Vinicius", "Jr", "11"}
     };
 
-    
     inicializar_cancha(&cancha);
 
     
-    asignar_equipo(&cancha.equipos[0], "Local FC", plantilla1, 11);
-    asignar_equipo(&cancha.equipos[1], "Visitante FC", plantilla2, 11);
+    asignar_equipo(&cancha.equipos[0], "America", Equipo1, 11);
+    asignar_equipo(&cancha.equipos[1], "Madrid", Equipo2, 11);
     posicionar_equipo(&cancha, 0);  
     posicionar_equipo(&cancha, 1);
 
-    
     mostrar_cancha(&cancha);
+    //printf("El 10 del America es  %s\n", cancha.equipos[0].players[9].name);
+    //printf("El 10 del Madrid es %s\n", cancha.equipos[1].players[9].name);
+
 
     
     free(cancha.equipos[0].players);
